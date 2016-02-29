@@ -200,7 +200,7 @@ public class XmlDom4J {
 		writer.close();
 		
 		//pretty format
-		OutputFormat format = OutputFormat.createCompactFormat();
+		OutputFormat format = OutputFormat.createPrettyPrint();
 		writer = new XMLWriter(System.out,format);
 		writer.write(document);
 		
