@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<linux:persons xmlns:linux="http://www.linux.org">
+	<person name="duangduangda" age="20" career="IT">
+		I am an IT engineer
+	</person>
+	
+	<person name="eric" age="22" career="VC">
+		I am a VCer
+	</person>
+</linux:persons>

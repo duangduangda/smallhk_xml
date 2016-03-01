@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gbk"?>
+<employees>
+<employee>
+<name>duangduangda</name>
+<sarary>1000</sarary>
+</employee>
+<employee>
+<name>eric</name>
+<sarary>2000</sarary>
+</employee>
+</employees>
