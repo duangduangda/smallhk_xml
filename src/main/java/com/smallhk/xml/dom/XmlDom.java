@@ -17,6 +17,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -26,16 +29,28 @@ import org.xml.sax.SAXException;
 
 public class XmlDom {
 
+	private static Logger logger = null;
+	
+	public XmlDom(){
+		BasicConfigurator.configure();
+		PropertyConfigurator.configure("log4j.properties");
+		logger = Logger.getLogger(XmlDom.class); 
+	}
+	
+	
 	public Document generateDocument() throws ParserConfigurationException{
+		logger.debug("start to build document....");
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document document = builder.newDocument();
+		logger.info("successfully generate document..");
 		return document;
 	}
 	
 	public void createXml() throws ParserConfigurationException, FileNotFoundException, TransformerException{
 		Document document = generateDocument();
-
+		logger.debug("start to build xml....");
+		
 		Element root = document.createElement("employees");
 		document.appendChild(root);
 
@@ -65,6 +80,7 @@ public class XmlDom {
 		PrintWriter pw = new PrintWriter(new FileOutputStream("employee.xml"));
 		StreamResult result = new StreamResult(pw);
 		transformer.transform(source, result);
+		logger.info("successfully generate xml..");
 	}
 	
 	public Document file2Document(String path) throws ParserConfigurationException, SAXException, IOException{
